@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <button id="theButton"> Hey click me </button>
+        <button id="secondButton"> Hey click me </button>
+        <script>
+            $(document).ready(
+                function(){
+                    $("#theButton").click(function(){
+                        $.get("https://api.github.com/users/Gwickstrom", displayName)
+                        function displayName(data){
+                            if(data.name){
+                                $('body').append("<p>"+data.name+"</p>");
+                            }
+                        };
+                    });
+                    $("#secondButton").click(function(){
+                        $.get("https://api.github.com/users/Gwickstrom", displayLocation)
+                        function displayLocation(data){
+                            if(data.location){
+                                $("body").append("<p>"+data.location+"</p>");
+                            }
+                        };
+                    });
+
+                }
+            );
+            //Notice that displayname is a function that takes in 1 parameter (this is the data that comes back from the API)
+            // $.document.getElementById("theButton").click(alert, "This");
+        </script>
+    </body>
+</html>
